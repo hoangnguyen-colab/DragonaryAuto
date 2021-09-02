@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragonaryAuto", "DragonaryAuto\DragonaryAuto.csproj", "{A2EAD1F2-047C-47D7-B99E-C1304303679A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2EAD1F2-047C-47D7-B99E-C1304303679A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2EAD1F2-047C-47D7-B99E-C1304303679A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2EAD1F2-047C-47D7-B99E-C1304303679A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2EAD1F2-047C-47D7-B99E-C1304303679A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60B981A9-E4B2-4020-A482-8AAC1480D2A9}
+	EndGlobalSection
+EndGlobal

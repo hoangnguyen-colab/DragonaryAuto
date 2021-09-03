@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,24 @@ namespace DragonaryAuto
 {
     public class Util
     {
+        private const String appName = "Dragonary";
+        private IntPtr hwnd = IntPtr.Zero;
         private const String prefix = "assets/";
+        public Util()
+        {
+            setWindowHandle();
+        }
+
+        private void setWindowHandle()
+        {
+            hwnd = AutoControl.FindWindowHandle(null, appName);
+        }
+
+        private IntPtr getWindowHandle()
+        {
+            return hwnd;
+        }
+
 
         public Point? handleFindImage(String image)
         {
@@ -39,7 +57,7 @@ namespace DragonaryAuto
             //    default:
             //        break;
             //}
-            var screen = CaptureHelper.CaptureWindow();
+            var screen = CaptureHelper.CaptureScreen();
             foreach (var image in new Constants().storyImages)
             {
                 var subBitmap = ImageScanOpenCV.GetImage(prefix + image);
@@ -72,7 +90,6 @@ namespace DragonaryAuto
             var subBitmap = ImageScanOpenCV.GetImage(prefix + image);
             var resBitmap = ImageScanOpenCV.FindOutPoint((Bitmap)screen, subBitmap);
 
-
             if (resBitmap != null)
             {
                 if (image == "mission-new.png") AutoControl.MouseClick(resBitmap.Value.X + 20, resBitmap.Value.Y + 20, EMouseKey.LEFT);
@@ -86,5 +103,16 @@ namespace DragonaryAuto
             }
         }
 
+        public void SendLeftClick()
+        {
+
+            var screen = CaptureHelper.CaptureWindow(hwnd);
+            var subBitmap = ImageScanOpenCV.GetImage("assets/mission-new.png");
+            var resBitmap = ImageScanOpenCV.FindOutPoint((Bitmap)screen, subBitmap);
+
+            AutoControl.SendClickDownOnPosition(hwnd, resBitmap.Value.X, resBitmap.Value.Y, EMouseKey.LEFT);
+            //AutoControl.MouseClick(resBitmap.Value.X, resBitmap.Value.Y, EMouseKey.LEFT);
+
+        }
     }
 }

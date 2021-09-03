@@ -10,32 +10,23 @@ namespace DragonaryAuto
     public class StoryStart
     {
         Util util = new Util();
+        List<string> images = new List<string>(new Constants().storyImagesRev);
 
-        public void GameStory()
+        public void handleStoryStart(bool _stoploop)
         {
-            bool stop = false;
-            while (stop == false)
+            for (int i = images.Count - 1; i >= 0 && !_stoploop; i--)
             {
-                bool result = util.handleMouseArray("story");
-                Console.WriteLine(result);
-                //if (resul)
-                //{
-                //    break;
-                //}
-
-            }
-        }
-
-        public void handleStoryStart()
-        {
-            bool stop = false;
-            while (stop == false)
-            {
-                bool resul = util.handleMouseClickPoint("story.png");
-                if (resul)
+                bool result = util.handleMouseClickPoint(images[i]);
+                if (result && (images[i] == "exit.png" || images[i] == "network-error.png"))
                 {
-                    GameStory();
-                    stop = true;
+                    images = new List<string>(new Constants().storyImagesRev);
+                    //stop = true;
+                    break;
+                }
+                else if (result && images[i] != "continue.png")
+                {
+                    images.RemoveAt(i);
+                    break;
                 }
             }
         }

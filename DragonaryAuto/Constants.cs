@@ -8,21 +8,11 @@ namespace DragonaryAuto
 {
     public class Constants
     {
-        public List<string> storyImages = new List<string>{
-            "mission-new.png",
-            "story-big.png",
-            "play-ing.png",
-            "manual.png",
-            "1x-speed-2.png",
-            "claim.png",
-            "continue.png",
-            "mission-8.png",
-            "play.png",
-            "exit.png",
-            "network-error.png"
-        };
+        public bool isDev = true;
+        public string publicAppVersion = "1.0.0";
+        public string devAppVersion = "1.0.1";
 
-        public List<string> storyImagesRev = new List<string>{
+        public List<string> storyImgs = new List<string>{
             "network-error.png",
             "exit.png",
             "play.png",
@@ -36,10 +26,21 @@ namespace DragonaryAuto
             "mission-new.png",
         };
 
-        public List<string> storyImagesReverse()
-        {
-            storyImages.Reverse();
-            return storyImages;
-        }
+        public List<string> storyMenuImgs = new List<string>{
+            "mission-8.png",
+            "story-big.png",
+            "mission-new.png",
+            "play.png",
+        };
+
+        public List<string> storyIngameImgs = new List<string>{
+            "network-error.png",
+            "exit.png",
+            "continue.png",
+            "claim.png",
+            "1x-speed-2.png",
+            "manual.png",
+            "play-ing.png",
+        };
     }
 }

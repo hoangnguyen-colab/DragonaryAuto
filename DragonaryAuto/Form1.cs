@@ -17,6 +17,7 @@ namespace DragonaryAuto
     public partial class Form1 : Form
     {
         StoryStart mission = new StoryStart();
+        Constants constanst = new Constants();
         private CancellationTokenSource cancellationToken;
         private bool _stopLoop = false;
 
@@ -28,6 +29,7 @@ namespace DragonaryAuto
         public Form1()
         {
             InitializeComponent();
+            versionTxt.Text = "ver: " + (constanst.isDev ? constanst.devAppVersion : constanst.publicAppVersion);
         }
 
         private async Task handleGameStart()

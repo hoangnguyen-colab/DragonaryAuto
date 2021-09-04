@@ -39,38 +39,6 @@ namespace DragonaryAuto
             return resBitmap;
         }
 
-        public bool handleMouseArray(string type)
-        {
-            //string[] imageArray = new Constants().storyImages;
-            //switch (type)
-            //{
-            //    case "story":
-            //        {
-            //            imageArray = new Constants().storyImages;
-            //            break;
-            //        }
-            //    case "embers":
-            //        {
-            //            imageArray = new Constants().storyImages;
-            //            break;
-            //        }
-            //    default:
-            //        break;
-            //}
-            var screen = CaptureHelper.CaptureScreen();
-            foreach (var image in new Constants().storyImages)
-            {
-                var subBitmap = ImageScanOpenCV.GetImage(prefix + image);
-                var resBitmap = ImageScanOpenCV.FindOutPoint((Bitmap)screen, subBitmap);
-                if (resBitmap != null)
-                {
-                    AutoControl.MouseClick(resBitmap.Value, EMouseKey.LEFT);
-                    //return true;
-                }
-            }
-            return false;
-        }
-
         public bool handleMouseClick(Point? point)
         {
             if (point != null)
@@ -92,8 +60,10 @@ namespace DragonaryAuto
 
             if (resBitmap != null)
             {
-                if (image == "mission-new.png") AutoControl.MouseClick(resBitmap.Value.X + 20, resBitmap.Value.Y + 20, EMouseKey.LEFT);
-                else AutoControl.MouseClick(resBitmap.Value, EMouseKey.LEFT);
+                int xCoord = resBitmap.Value.X + subBitmap.Width / 2;
+                int yCoord = resBitmap.Value.Y + subBitmap.Height/ 2;
+                if (image == "mission-new.png" || image == "mission-8.png") AutoControl.MouseClick(resBitmap.Value.X + 20, resBitmap.Value.Y + 20, EMouseKey.LEFT);
+                else AutoControl.MouseClick(xCoord, yCoord, EMouseKey.LEFT);
 
                 return true;
             }

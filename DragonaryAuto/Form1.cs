@@ -32,6 +32,43 @@ namespace DragonaryAuto
             versionTxt.Text = "ver: " + (constanst.isDev ? constanst.devAppVersion : constanst.publicAppVersion);
         }
 
+        private void ToggleBtn(string type)
+        {
+            switch (type)
+            {
+                case "start":
+                    {
+                        startBtn.Enabled = false;
+                        ingameAutoBtn.Enabled = false;
+                        cancelBtn.Enabled = true;
+                        cancelBtn.Text = "Stop Story Auto";
+                        _stopLoop = false;
+                        break;
+                    }
+                case "start-ingame":
+                    {
+                        startBtn.Enabled = false;
+                        ingameAutoBtn.Enabled = false;
+                        cancelBtn.Enabled = true;
+                        cancelBtn.Text = "Stop Ingame Auto";
+                        _stopLoop = false;
+                        break;
+                    }
+                case "stop":
+                    {
+                        _stopLoop = true;
+                        startBtn.Enabled = true;
+                        ingameAutoBtn.Enabled = true;
+                        cancelBtn.Enabled = false;
+                        cancelBtn.Text = "Stop";
+                        cancellationToken.Cancel();
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
         private async Task handleGameStart()
         {
             cancellationToken = new CancellationTokenSource();
@@ -40,17 +77,31 @@ namespace DragonaryAuto
             {
                 await Task.Run(() =>
                 {
-                    mission.handleStoryStart(_stopLoop);
+                    new StoryStart().handleStoryStart(_stopLoop);
                 }, cancellationToken.Token);
             }
+
+            ToggleBtn("stop");
         }
+
+        private async Task handleInGameStart()
+        {
+            cancellationToken = new CancellationTokenSource();
+
+            await Task.Run(() =>
+            {
+                new StoryStart("ingame").handleIngameContinue(_stopLoop);
+            }, cancellationToken.Token);
+
+            ToggleBtn("stop");
+        }
+
         private async void startBtn_Click(object sender, EventArgs e)
         {
             try
             {
                 ToggleBtn("start");
                 await handleGameStart();
-
             }
             catch (Exception error)
             {
@@ -66,33 +117,17 @@ namespace DragonaryAuto
             }
         }
 
-        private void ToggleBtn(string type)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            switch (type)
+            try
             {
-                case "start":
-                    {
-                        startBtn.Enabled = false;
-                        cancelBtn.Enabled = true;
-                        _stopLoop = false;
-                        break;
-                    }
-                case "stop":
-                    {
-                        _stopLoop = true;
-                        startBtn.Enabled = true;
-                        cancelBtn.Enabled = false;
-                        cancellationToken.Cancel();
-                        break;
-                    }
-                default:
-                    break;
+                ToggleBtn("start-ingame");
+                await handleInGameStart();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new Util().SendLeftClick();
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
     }
 }

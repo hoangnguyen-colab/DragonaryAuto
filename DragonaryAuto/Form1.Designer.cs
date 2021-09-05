@@ -34,14 +34,14 @@ namespace DragonaryAuto
             this.emberRdBtn = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cancelBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ingameAutoBtn = new System.Windows.Forms.Button();
             this.versionTxt = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(14, 110);
+            this.startBtn.Location = new System.Drawing.Point(14, 146);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 23);
             this.startBtn.TabIndex = 0;
@@ -85,28 +85,27 @@ namespace DragonaryAuto
             // cancelBtn
             // 
             this.cancelBtn.Enabled = false;
-            this.cancelBtn.Location = new System.Drawing.Point(118, 110);
+            this.cancelBtn.Location = new System.Drawing.Point(14, 186);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.Size = new System.Drawing.Size(111, 23);
             this.cancelBtn.TabIndex = 6;
-            this.cancelBtn.Text = "Stop Auto";
+            this.cancelBtn.Text = "Stop";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // button1
+            // ingameAutoBtn
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(212, 110);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "TestClick";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ingameAutoBtn.Location = new System.Drawing.Point(95, 146);
+            this.ingameAutoBtn.Name = "ingameAutoBtn";
+            this.ingameAutoBtn.Size = new System.Drawing.Size(75, 23);
+            this.ingameAutoBtn.TabIndex = 7;
+            this.ingameAutoBtn.Text = "Ingame Auto";
+            this.ingameAutoBtn.UseVisualStyleBackColor = true;
+            this.ingameAutoBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // versionTxt
             // 
-            this.versionTxt.Location = new System.Drawing.Point(252, 146);
+            this.versionTxt.Location = new System.Drawing.Point(235, 191);
             this.versionTxt.Name = "versionTxt";
             this.versionTxt.Size = new System.Drawing.Size(64, 23);
             this.versionTxt.TabIndex = 8;
@@ -116,9 +115,9 @@ namespace DragonaryAuto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 168);
+            this.ClientSize = new System.Drawing.Size(299, 217);
             this.Controls.Add(this.versionTxt);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ingameAutoBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.startBtn);
@@ -137,7 +136,7 @@ namespace DragonaryAuto
         private System.Windows.Forms.RadioButton emberRdBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button cancelBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ingameAutoBtn;
         private System.Windows.Forms.Label versionTxt;
     }
 }
